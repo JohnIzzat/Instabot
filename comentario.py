@@ -38,7 +38,7 @@ def main():
         try:
             #inserindo login
             login = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input')
-            login.send_keys("Seu login")
+            login.send_keys("Login")
             #inserindo senha
             senha = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input')
             senha.send_keys("Senha")
