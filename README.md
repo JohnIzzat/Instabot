@@ -1,7 +1,7 @@
 # Bot do Instagram.
 
 * Postado no dia 08/08/2027
-* Ultima atualização : 08/08/2024
+* Ultima atualização : 14/08/2024
 
 # Introdução
 Bom, eu criei esse Bot para eu participar de um sorteio onde eu tinha que ficar enviando diversas comentarios, então tive a ideia de criar esse bot para facilitar a minha vida,
