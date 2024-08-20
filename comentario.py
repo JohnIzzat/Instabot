@@ -38,10 +38,10 @@ def main():
         try:
             #inserindo login
             login = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input')
-            login.send_keys("Login")
+            login.send_keys("Seu login")
             #inserindo senha
             senha = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input')
-            senha.send_keys("Senha")
+            senha.send_keys("Sua senha")
             # localizando o botão entrar e clicando em entrar
             entrar = driver.find_element(By.XPATH, '//div[@class="x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1xmf6yo x1e56ztr x540dpk x1m39q7l x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]')
             entrar.click()
@@ -69,16 +69,14 @@ def main():
     # Esperando a pagina carregar
     sleep(10)
 
-    # Definindo o tempo e a mensagem, contador, rondom mensagem
-    tempo_intervalo = random.randint(10, 20)  # Intervalo de tempo em segundos random
-    sleep(tempo_intervalo)
+    # Definindo as mensagens que vão ser enviadas
     mensagens = [
         "Dá um salve fafa",
         "essa e minha",
         "Cofia em Deus",
         "Sonhei com essa",
         "meu dia vai chegar"
-]                                               # Mensagem random 
+]
 
     contador = 0 # Inicializar contador
     # Loop de envio de mensagens
@@ -86,8 +84,12 @@ def main():
         contador += 1 # roda toda vez que enviar a mensagem
         mensagem = random.choice(mensagens)
         hora = datetime.datetime.now().strftime("%H:%M:%S")
+
+        tempo_intervalo = random.randint(10, 20)
+
         enviar_mensagem(driver, mensagem,contador)
         print(f"A mensagem foi enviada {contador} vezes proxima mensagem em {tempo_intervalo} segundos, mensagem enviada as {hora}")
+
         sleep(tempo_intervalo)
 
 if __name__ == "__main__":
