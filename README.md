@@ -9,13 +9,11 @@
 # Funções
 * Comentario automatico - Funcionando na data 07/09/2024
 * Raspagem de dados de Perfil - Incompleto
-* **NO MOMENTO ESTÁ SEM INTERFACE GRÁFICA**
+* **SOMENTE PELO TERMINAL EXECUTANDO O COMENTARIOAUTO.EXE**
 
 
 # Como usar ?
 * Há um Executavel com o nome Comentario:
-1. Selenium
-2. Datetime
 
 
 * Comentario automatico
