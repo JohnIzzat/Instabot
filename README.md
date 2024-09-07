@@ -4,8 +4,7 @@
 * Ultima atualização : 14/08/2024
 
 # Introdução
-Bom, eu criei esse Bot para eu participar de um sorteio onde eu tinha que ficar enviando diversas comentarios, então tive a ideia de criar esse bot para facilitar a minha vida,
-ao decorrer do tempo eu fui tendo ideias e implementando e assim e fui criando o bot.
+
 
 # Funções
 * Comentario automatico - Funcionando na data 08/08/2024
