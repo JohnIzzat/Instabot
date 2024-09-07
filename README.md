@@ -5,7 +5,6 @@
 
 # Introdução
 
-
 # Funções
 * Comentario automatico - Funcionando na data 07/09/2024
 * Raspagem de dados de Perfil - Incompleto
@@ -13,7 +12,8 @@
 
 
 # Como usar ?
-* Há um Executavel com o nome Comentario:
+* Há um Executavel com o nome ComentarioAUTO.exe
+* Por enquanto temos somente o comentario aumtomatico funcionando. 
 
 
 * Comentario automatico
