@@ -7,7 +7,7 @@
 
 
 # Funções
-* Comentario automatico - Funcionando na data 08/08/2024
+* Comentario automatico - Funcionando na data 07/09/2024
 * Raspagem de dados de Perfil - Incompleto
 * **NO MOMENTO ESTÁ SEM INTERFACE GRÁFICA**
 
