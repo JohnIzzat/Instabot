@@ -1,6 +1,6 @@
 # Bot do Instagram.
 
-* Postado no dia 08/08/2027
+* Postado no dia 08/08/2024
 * Ultima atualização : 07/09/2024
 
 # Introdução
