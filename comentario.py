@@ -6,6 +6,53 @@ from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 import datetime
 import random
+import getpass
+
+
+# Informando login,senha,postagem e comentarios
+
+
+print('[AVISO] Recomendo que fique de olho no sistema para verificar se está tudo Ok!')
+print('[AVISO] Recomendação que não utilize o seu Instagram enqunto estiver utilizando o sistem para evitar bloqueio.')
+
+
+sleep(2)
+print('[AVISO] Informe seu login e senha!')
+
+    # Informando Login e senha
+informar_login = str(input('Informe seu login: '))
+print('Sua senha será digitada, apenas ficará oculta para sua privacidade!')
+informar_senha = getpass.getpass('Informe sua senha: ')
+
+
+
+    # Informando Comentario
+sleep(2)
+print('[AVISO] Informe todo a URL da postagem para que não tenha problema!!')
+informar_postagem = str(input('Informe o link da postagem:'))
+sleep(2)
+
+    # Informando o tempo de envio
+print('[AVISO] O Primeiro tempo informado e o segundo é para randomizar!!')
+sleep(2)
+print('[AVISO] Informe o tempo em SEGUNDOS')    
+temp1 = int(input('Primeiro tempo: '))
+temp2 = int(input('Segundo tempo: '))
+
+
+    # Informando os comentarios
+sleep(2)
+print('[AVISO] Informe o Comentario que você deseja que seja enviado, se for informado mais de um será randomizado entre os que você informar!!! \n[AVISO] Caso queira que seja apenas um comentario os demais comentario você deixa em branco!!!')
+
+c1 = str(input('Infrome o comentario: '))
+c2 = str(input('Infrome o comentario: '))
+c3 = str(input('Infrome o comentario: '))
+c4 = str(input('Infrome o comentario: '))
+c5 = str(input('Infrome o comentario: '))
+c6 = str(input('Infrome o comentario: '))
+sleep(3)
+print('AVISO] Ok, aguarde até que o Sistema se inicialize!!')
+sleep(5)
 
 def enviar_mensagem(driver, mensagem, contador):
     try:
@@ -38,10 +85,10 @@ def main():
         try:
             #inserindo login
             login = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input')
-            login.send_keys("Seu login")
+            login.send_keys('{}'.format(informar_login))
             #inserindo senha
             senha = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input')
-            senha.send_keys("Sua senhaa")
+            senha.send_keys('{}'.format(informar_senha))
             # localizando o botão entrar e clicando em entrar
             entrar = driver.find_element(By.XPATH, '//div[@class="x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1xmf6yo x1e56ztr x540dpk x1m39q7l x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]')
             entrar.click()
@@ -58,7 +105,7 @@ def main():
     # acessando a postagem
     while True:
         try:
-            postagem = driver.get('https://www.instagram.com/p/C95sbWrpG7E/')
+            postagem = driver.get('{}'.format(informar_postagem)) #Link da postagem
             print("encontrei a postagem!")
             break
         except NoSuchElementException as e:
@@ -70,13 +117,7 @@ def main():
     sleep(10)
 
     # Definindo as mensagens que vão ser enviadas
-    mensagens = [
-        "Dá um salve fafa",
-        "essa e minha",
-        "Cofia em Deus",
-        "Sonhei com essa",
-        "meu dia vai chegar"
-]
+    mensagens = [c for c in [c1,c2,c3,c4,c5,c6] if c]
 
     contador = 0 # Inicializar contador
     # Loop de envio de mensagens
@@ -85,7 +126,9 @@ def main():
         mensagem = random.choice(mensagens)
         hora = datetime.datetime.now().strftime("%H:%M:%S")
 
-        tempo_intervalo = random.randint(10, 20)
+        # Tempo a ser Randomizado
+
+        tempo_intervalo = random.randint(min(int(temp1), int(temp2)), max(int(temp1), int(temp2)))
 
         enviar_mensagem(driver, mensagem,contador)
         print(f"A mensagem foi enviada {contador} vezes proxima mensagem em {tempo_intervalo} segundos, mensagem enviada as {hora}")
