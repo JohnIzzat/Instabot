@@ -13,15 +13,15 @@
 
 
 # Como usar ?
-* É necessario conter as seguintes bibliotecas:
+* Há um Executavel com o nome Comentario:
 1. Selenium
 2. Datetime
 
 
 * Comentario automatico
-1. Abra o código com qualquer editor
-2. Informe seu login no campo edicado
-3. Informe sua senha no campo edicado
-4. Informe a postagem que você deseja comentar
-5. Informe as mensagens, quanto mais mensagens você informar, melhor pois fica mais humano para o algoritimo do instagram
-6. Informe o tempo em **segundos** Ex. (300, 420) o bot vai randomizar esse tempo que será enviado, eu acho esse um ótimo tempo, eu não tive problema
+1. Abra o código com qualquer editor.
+2. Informe seu login.
+3. Informe sua senha.
+4. Informe o link da postagem.
+5. Informe os comentarios que você deseja enviar, lembrando que quando for mais de um comentario será randomizado entre eles.
+    Caso Não informar os demais comentarios não será enviado então e só deixar em branco.
