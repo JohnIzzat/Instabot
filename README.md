@@ -1,7 +1,8 @@
 # Bot do Instagram.
 
 * Postado no dia 08/08/2024
-* Ultima atualização : 07/09/2024
+* Ultima atualização : 23/09/2024
+* Todos os Modulos Funcionando corretamente
 
 # Introdução
 
