@@ -2,6 +2,8 @@ import selenium
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 # Configuração do Selenium WebDriver
@@ -30,7 +32,7 @@ while True:
 sleep(15)
 
 # Navegar até o perfil do usuário
-driver.get('https://www.instagram.com/johnizzat_/')
+driver.get('https://www.instagram.com/pedrasgz/')
 sleep(6)
 
 # Clicar em seguidores
@@ -38,7 +40,7 @@ while True:
     try:
         seguidores = driver.find_element(By.XPATH, "//a[contains(@href, 'followers')]")
         seguidores.click()
-        print("Consegui Clicar!")
+        print("Consegui clicar em seguidores!")
         break
     except Exception as e:
         print(f"Erro ao tentar clicar em seguidores: {e}")
@@ -49,26 +51,42 @@ sleep(8)
 # Lista para armazenar os nomes dos seguidores
 dados_usuarios = []
 
-# Raspagem de dados sem rolagem
+# Realizar a rolagem e raspagem dos seguidores
 try:
-    # Encontrar todos os nomes de seguidores carregados inicialmente
-    nomes = driver.find_elements(By.XPATH, "//span[@class='_ap3a _aaco _aacw _aacx _aad7 _aade']")
-    for nome in nomes:
-        texto_nome = nome.text.strip()
-        if texto_nome and texto_nome not in dados_usuarios:  # Verificar se o nome não está vazio e evitar duplicados
-            dados_usuarios.append(texto_nome)
-            print(texto_nome) # Mostra os dados que foram pegos
-except Exception as e:
-    print(f"Erro durante a raspagem: {e}")
-    print("Raspagem de dados concluída ou interrompida pelo usuário.")
+    # Esperar o modal de seguidores aparecer
+    modal_seguidores = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//div[@class='xyi19xy x1ccrb07 xtf3nb5 x1pc53ja x1lliihq x1iyjqo2 xs83m0k xz65tgg x1rife3k x1n2onr6']"))
+    )
+    last_height = driver.execute_script("return arguments[0].scrollHeight;", modal_seguidores)
 
-# Realizar o Scroll
+    while True:
+        # Coletar os nomes visíveis no modal de seguidores
+        nomes = driver.find_elements(By.XPATH, "//span[@class='_ap3a _aaco _aacw _aacx _aad7 _aade']")
+        for nome in nomes:
+            texto_nome = nome.text.strip()
+            if texto_nome and texto_nome not in dados_usuarios:  # Verificar se o nome não está vazio e evitar duplicados
+                dados_usuarios.append(texto_nome)
+                print(texto_nome)
+
+        # Rolar a lista de seguidores para baixo
+        driver.execute_script("arguments[0].scrollTo(0, arguments[0].scrollHeight);", modal_seguidores)
+        sleep(2)  # Tempo para carregar o novo conteúdo
+
+        # Verificar se chegamos ao final da rolagem
+        new_height = driver.execute_script("return arguments[0].scrollHeight;", modal_seguidores)
+        if new_height == last_height:
+            print("Fim da lista de seguidores.")
+            break
+        last_height = new_height
+
+except Exception as e:
+    print(f"Erro durante a raspagem ou rolagem: {e}")
 
 # Salvando dados em um arquivo txt
 nome_arquivo = "dados.txt"
 with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
     for nome in dados_usuarios:
         arquivo.write(nome + '\n')
-print(f"Dados salvos no arquivo {nome_arquivo}.")
 
+print(f"Dados salvos no arquivo {nome_arquivo}.")
 input('')
